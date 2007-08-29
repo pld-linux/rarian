@@ -7,7 +7,7 @@ Group:		Base
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/rarian/0.5/%{name}-%{version}.tar.bz2
 # Source0-md5:	9afee4d25a10bd5310ee21e23a09d659
 Patch0:		%{name}-scrollkeeper.patch
-URL:		http://ftp.gnome.org/pub/gnome/sources/rarian
+URL:		http://rarian.freedesktop.org/
 BuildRequires:	libxslt-devel
 Requires:	coreutils
 Requires:	gawk
@@ -50,11 +50,14 @@ the Rarian library ("librarian").
 	--enable-omf-read \
 	--disable-skdb-update
 
-%{__make} %{?_smp_mflags}
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_datadir}/omf
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 rm -rf $RPM_BUILD_ROOT%{_libdir}/librarian.a
 
@@ -80,6 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/rarian-sk-*
 %attr(755,root,root) %{_bindir}/scrollkeeper-*
+%dir %{_datadir}/omf
 
 %files devel
 %defattr(644,root,root,755)
