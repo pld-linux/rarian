@@ -6,6 +6,7 @@ License:	LGPL v2+
 Group:		Base
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/rarian/0.5/%{name}-%{version}.tar.bz2
 # Source0-md5:	9afee4d25a10bd5310ee21e23a09d659
+Patch0:		%{name}-scrollkeeper.patch
 URL:		http://ftp.gnome.org/pub/gnome/sources/rarian
 BuildRequires:	libxslt-devel
 Requires:	coreutils
@@ -42,10 +43,12 @@ the Rarian library ("librarian").
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure \
-	--disable-skdb-update \
+	--enable-omf-read \
+	--disable-skdb-update
 
 %{__make} %{?_smp_mflags}
 
