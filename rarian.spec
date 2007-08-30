@@ -1,7 +1,7 @@
 Summary:	Rarian is a documentation meta-data library
 Name:		rarian
 Version:	0.5.8
-Release:	1
+Release:	2
 License:	LGPL v2+
 Group:		Base
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/rarian/0.5/%{name}-%{version}.tar.bz2
@@ -26,7 +26,7 @@ License:	GPL v2+
 Group:		Base
 Requires:	%{name} = %{version}-%{release}
 Provides:	scrollkeeper
-Obsoletes:	scrollkeeper <= 0.3.14
+Obsoletes:	scrollkeeper <= 1:0.3.14
 
 %description compat
 This package contains files needed to maintain backward-compatibility
