@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Rarian - biblioteka metadanych dokumentacji
 Name:		rarian
 Version:	0.5.8
 Release:	2
-License:	LGPL v2+
+License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/rarian/0.5/%{name}-%{version}.tar.bz2
 # Source0-md5:	9afee4d25a10bd5310ee21e23a09d659
@@ -98,7 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README COPYING COPYING.LIB COPYING.UTILS ChangeLog NEWS AUTHORS
+%doc AUTHORS COPYING ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/rarian-example
 %attr(755,root,root) %{_libdir}/librarian.so.*.*.*
 %{_datadir}/librarian
