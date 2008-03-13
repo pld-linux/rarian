@@ -1,13 +1,16 @@
 Summary:	Rarian - a documentation meta-data library
 Summary(pl.UTF-8):	Rarian - biblioteka metadanych dokumentacji
 Name:		rarian
-Version:	0.7.1
+Version:	0.8.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/rarian/0.7/%{name}-%{version}.tar.bz2
-# Source0-md5:	f2a2755d62cecc717af2b5432ae0f390
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/rarian/0.8/%{name}-%{version}.tar.bz2
+# Source0-md5:	67e2d3ab27edcebdae9b85733712805e
 URL:		http://rarian.freedesktop.org/
+BuildRequires:	autoconf >= 2.59
+BuildRequires:	automake
+BuildRequires:	libtool
 BuildRequires:	libxslt-devel
 Requires:	coreutils
 Requires:	gawk
@@ -70,6 +73,11 @@ Statyczna biblioteka Rarian (librarian).
 
 %prep
 %setup -q
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%{__automake}
 
 %build
 %configure \
@@ -99,6 +107,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS COPYING ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/rarian-example
 %attr(755,root,root) %{_libdir}/librarian.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/librarian.so.0
 %{_datadir}/librarian
 %{_datadir}/help
 
