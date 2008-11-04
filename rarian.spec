@@ -10,6 +10,7 @@ Source0:	http://ftp.gnome.org/pub/GNOME/sources/rarian/0.8/%{name}-%{version}.ta
 URL:		http://rarian.freedesktop.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
+BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRequires:	libxslt-devel
 Requires:	coreutils
