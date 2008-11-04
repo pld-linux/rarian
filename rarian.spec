@@ -51,6 +51,7 @@ Summary:	Development files for Rarian
 Summary(pl.UTF-8):	Pliki programistyczne Rariana
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	libstdc++-devel
 
 %description devel
 This package contains files required to develop applications that use
