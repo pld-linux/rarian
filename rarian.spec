@@ -2,11 +2,12 @@ Summary:	Rarian - a documentation meta-data library
 Summary(pl.UTF-8):	Rarian - biblioteka metadanych dokumentacji
 Name:		rarian
 Version:	0.8.1
-Release:	2
-License:	LGPL v2.1+
+Release:	3
+License:	LGPL v2.1+ (library), GPL v2+ (utilities)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/rarian/0.8/%{name}-%{version}.tar.bz2
 # Source0-md5:	75091185e13da67a0ff4279de1757b94
+Patch0:		%{name}-am.patch
 URL:		http://rarian.freedesktop.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -75,13 +76,14 @@ Statyczna biblioteka Rarian (librarian).
 
 %prep
 %setup -q
+%patch0 -p1
+
+%build
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-
-%build
 %configure \
 	--enable-omf-read \
 	--disable-skdb-update
@@ -95,6 +97,9 @@ install -d $RPM_BUILD_ROOT%{_datadir}/omf
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+# obsolted by pkg-config
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/librarian.la
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -106,12 +111,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%doc COPYING ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/rarian-example
 %attr(755,root,root) %{_libdir}/librarian.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/librarian.so.0
 %{_datadir}/librarian
-%{_datadir}/help/*
+%{_datadir}/help/rarian.document
 
 %files compat
 %defattr(644,root,root,755)
@@ -122,7 +127,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/librarian.so
-%{_libdir}/librarian.la
 %{_includedir}/rarian
 %{_pkgconfigdir}/rarian.pc
 
