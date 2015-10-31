@@ -2,7 +2,7 @@ Summary:	Rarian - a documentation meta-data library
 Summary(pl.UTF-8):	Rarian - biblioteka metadanych dokumentacji
 Name:		rarian
 Version:	0.8.1
-Release:	4
+Release:	5
 License:	LGPL v2.1+ (library), GPL v2+ (utilities)
 Group:		Libraries
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/rarian/0.8/%{name}-%{version}.tar.bz2
